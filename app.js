@@ -1,12 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Zoe4412402X',
-    database: 'questionnaire'
-});
+
 
 var app = express();
 
@@ -17,6 +12,12 @@ app.use('/public/', express.static('./public'));
 app.engine('html', require('express-art-template'));
 
 app.get('/submit', (req, res) => {
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'Zoe4412402X',
+        database: 'questionnaire'
+    });
     console.log(req.query);
     var data = req.query['q'].split(',');
     
